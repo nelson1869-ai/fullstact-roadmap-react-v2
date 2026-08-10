@@ -1,8 +1,11 @@
 function App() {
+  const title = "My Fullstack Roadmap";
+  const currentTopic = "React";
+
   return (
     <main>
-      <h1>My Fullstack Roadmap</h1>
-      <p>Learning React one step at a time.</p>
+      <h1>{title}</h1>
+      <p>I am currently learning {currentTopic}.</p>
     </main>
   );
 }
