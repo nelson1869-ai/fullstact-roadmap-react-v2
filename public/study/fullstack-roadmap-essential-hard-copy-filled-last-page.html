@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fullstack Roadmap — Essential Hard Copy</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #fff;
+    color: #000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 9.8px;
+    line-height: 1.13;
+  }
+  main {
+    max-width: 8.1in;
+    margin: 0 auto;
+    padding: 0.16in 0.18in 0.22in;
+  }
+  h1 { font-size: 16px; margin: 0 0 4px; }
+  h2 {
+    font-size: 12px;
+    margin: 7px 0 3px;
+    border-bottom: 1px solid #999;
+    padding-bottom: 1px;
+  }
+  h3 { font-size: 10.5px; margin: 5px 0 2px; }
+  p { margin: 2px 0; }
+  ul, ol { margin: 2px 0 3px; padding-left: 14px; }
+  li { margin: 0; }
+  code { font-family: "Courier New", monospace; font-size: 0.92em; }
+  pre {
+    margin: 3px 0 4px;
+    padding: 4px 5px;
+    border: 1px solid #aaa;
+    background: #fff;
+    color: #000;
+    font-family: "Courier New", monospace;
+    font-size: 8.8px;
+    line-height: 1.08;
+    white-space: pre-wrap;
+    break-inside: avoid;
+  }
+  .box {
+    border: 1px solid #aaa;
+    padding: 3px 5px;
+    margin: 3px 0;
+    break-inside: avoid;
+  }
+  @page { size: Letter; margin: 0.22in; }
+  @media print {
+    body { font-size: 8.5pt; line-height: 1.08; }
+    main { max-width: none; padding: 0; }
+    h1 { font-size: 13pt; }
+    h2 { font-size: 9.8pt; margin-top: 5pt; }
+    h3 { font-size: 8.8pt; }
+    pre { font-size: 7.1pt; line-height: 1.0; padding: 3pt 4pt; }
+    .box { padding: 2.5pt 4pt; margin: 2pt 0; }
+  }
+
+  .study-content {
+    column-count: 2;
+    column-gap: 0.22in;
+    column-rule: 1px solid #bbb;
+  }
+  .study-content h2,
+  .study-content h3,
+  .study-content pre,
+  .study-content .box,
+  .study-content p,
+  .study-content ul,
+  .study-content ol {
+    break-inside: avoid;
+  }
+
+  @media print {
+    .study-content {
+      column-count: 2;
+      column-gap: 0.18in;
+      column-rule: 0.5pt solid #aaa;
+    }
+  }
+
+</style>
+
+<style>
+/* Low-ink study edition: white paper, no filled backgrounds. */
+body, main, .box, pre { background: #fff !important; }
+.box { border: 1px solid #bbb; }
+pre {
+  border: 1px solid #c8c8c8;
+  padding: 3px 4px;
+  font-size: 8.5px;
+  line-height: 1.04;
+}
+
+/* Lightweight code highlighting — text color only, so little extra ink. */
+.code-keyword { color: #5b21b6; font-weight: 600; }
+.code-string { color: #166534; }
+.code-tag { color: #1d4ed8; }
+.code-comment { color: #666; font-style: italic; }
+.code-type { color: #9a3412; }
+.code-prop { color: #075985; }
+
+@media print {
+  pre {
+    font-size: 6.9pt;
+    line-height: 1.0;
+    padding: 2.5pt 3.5pt;
+  }
+  h2 { margin-top: 4.5pt; }
+  h3 { margin-top: 3.5pt; }
+}
+</style>
+
+</head>
+<body>
+<main>
+<h1>Fullstack Roadmap — Essential Study Guide</h1>
+<p><strong>Goal:</strong> compact hard-copy reviewer. Mostly black text + small code colors only, para low ink but easier to study.</p>
+
+<div class="box"><strong>Main flow:</strong> Learn → Build → Explain → Review → Interview Practice → Job Readiness</div>
+<div class="study-content">
+
+<h2>1. React App Flow</h2>
+<pre>index.html
+  ↓
+&lt;div id="root"&gt;
+  ↓
+main.tsx
+  ↓
+createRoot(...)
+  ↓
+.render(...)
+  ↓
+&lt;App /&gt;
+  ↓
+Components
+  ↓
+Browser UI</pre>
+
+<pre>createRoot(document.getElementById('root')!).render(
+  &lt;StrictMode&gt;
+    &lt;App /&gt;
+  &lt;/StrictMode&gt;,
+)</pre>
+
+<p><strong>Remember:</strong> <code>main.tsx</code> starts React. <code>App.tsx</code> defines the main UI. Think of <code>main.tsx</code> as the entry point and <code>App.tsx</code> as the first main component.</p>
+
+<h2>2. JSX</h2>
+<pre>const title = 'My Fullstack Roadmap'
+
+&lt;h1&gt;{title}&lt;/h1&gt;</pre>
+<p><code>{ }</code> means: run a JavaScript/TypeScript expression inside JSX. Example: <code>{title}</code> displays the current value stored in <code>title</code>.</p>
+
+<h2>3. Components</h2>
+<pre>function TopicCard() {
+  return &lt;section&gt;...&lt;/section&gt;
+}</pre>
+<p>A <strong>component</strong> is a reusable piece of UI. Instead of repeating the same markup, we build it once and reuse it with different data.</p>
+
+<h2>4. Props</h2>
+<pre>type TopicCardProps = {
+  title: string
+  description: string
+}
+
+function TopicCard({ title, description }: TopicCardProps) {
+  return (
+    &lt;section&gt;
+      &lt;h2&gt;{title}&lt;/h2&gt;
+      &lt;p&gt;{description}&lt;/p&gt;
+    &lt;/section&gt;
+  )
+}</pre>
+
+<pre>&lt;TopicCard
+  title="React"
+  description="Learning React fundamentals."
+/&gt;</pre>
+
+<p><strong>Core idea:</strong> Parent sends props → child receives props → child renders UI. Props let the same component display different content without duplicating its structure.</p>
+
+<h2>5. Arrays + Objects</h2>
+<pre>const topics = [
+  {
+    title: 'React',
+    description: 'Learning React fundamentals.',
+    status: 'In Progress',
+  },
+]</pre>
+
+<p><strong>Array</strong> = list/collection. <strong>Object</strong> = grouped related properties. Here, <code>topics</code> is the list and each topic is one object inside that list.</p>
+<p><code>topic.title</code> = property access / dot notation.</p>
+
+<h2>6. .map() ⭐</h2>
+<pre>{topics.map((topic) =&gt; (
+  &lt;TopicCard
+    key={topic.title}
+    title={topic.title}
+    description={topic.description}
+    status={topic.status}
+  /&gt;
+))}</pre>
+
+<p><strong>.map()</strong> goes through each array item and returns a transformed result for each item. In React, this is commonly how an array of data becomes a list of UI components.</p>
+
+<div class="box">
+<strong>Read it:</strong><br>
+“Go through the topics array and, for each topic, return a TopicCard.”<br>
+Taglish: “Isa-isahin yung topics array, then gumawa ng TopicCard for every topic.”
+</div>
+
+<h2>7. Arrow Function</h2>
+<pre>(topic) =&gt; (
+  &lt;TopicCard /&gt;
+)</pre>
+<p><code>=&gt;</code> = arrow function. Receive a value → return something. In <code>.map()</code>, the current array item is received, then we return the UI for that item.</p>
+
+<h2>8. key</h2>
+<pre>key={topic.title}</pre>
+<p><code>key</code> uniquely identifies list items so React can track changes. A stable database ID is usually better than a title when one is available.</p>
+
+<h2>9. TypeScript Union Type</h2>
+<pre>status: 'In Progress' | 'Next'</pre>
+<p><code>|</code> means OR. Only those values are allowed. This gives better type safety than accepting any possible <code>string</code>.</p>
+
+<h2>10. Essential Vocabulary</h2>
+<ul>
+  <li><strong>Render</strong> — display/produce UI.</li>
+  <li><strong>Import</strong> — bring code from another file.</li>
+  <li><strong>Export</strong> — make code available to other files.</li>
+  <li><strong>Reusable</strong> — can be used many times.</li>
+  <li><strong>Dynamic</strong> — value comes from data, not hardcoded text.</li>
+  <li><strong>Type-safe</strong> — TypeScript checks allowed value types.</li>
+  <li><strong>Iterate</strong> — go through items one by one.</li>
+</ul>
+
+<h2>11. Git Essentials</h2>
+<pre>git add .
+git commit -m "message"
+git push</pre>
+<p><code>-m</code> = message. <code>git add .</code> stages changes. <code>git push</code> sends commits to GitHub.</p>
+
+<h2>12. Real Interview Must-Know</h2>
+
+<p><strong>Q: What is React?</strong><br>
+A: “React is a JavaScript library for building user interfaces using reusable components.”</p>
+
+<p><strong>Q: What is a component?</strong><br>
+A: “A component is a reusable piece of UI that helps break an application into smaller parts.”</p>
+
+<p><strong>Q: What are props?</strong><br>
+A: “Props are data passed from a parent component to a child component.”</p>
+
+<p><strong>Q: What does .map() do?</strong><br>
+A: “The map method goes through each item in an array and returns a new array by transforming each item. In React, I use it to render components from data.”</p>
+
+<p><strong>Q: Why does React need keys?</strong><br>
+A: “Keys uniquely identify list items so React can track changes efficiently.”</p>
+
+<p><strong>Q: What is TypeScript?</strong><br>
+A: “TypeScript adds static type checking to JavaScript and helps catch mistakes during development.”</p>
+
+<p><strong>Q: How does your React app start?</strong><br>
+A: “The browser loads index.html. Then main.tsx finds the root element, creates a React root, and renders the App component.”</p>
+
+<h2>13. HR Must-Know</h2>
+
+<p><strong>Tell me about yourself.</strong><br>
+“I am developing my fullstack web development skills through hands-on projects. I focus on understanding the fundamentals, building real features, and improving both my technical skills and communication.”</p>
+
+<p><strong>How do you handle something you do not know?</strong><br>
+“I break the problem into smaller parts, check reliable documentation, test possible solutions, and make sure I understand why the final solution works.”</p>
+
+<p><strong>Why should we hire you?</strong><br>
+“I am still growing as a developer, but I learn seriously, build real projects, accept feedback, and focus on understanding the code I write.”</p>
+
+<h2>14. Not Covered Yet — Future Interview Topics</h2>
+<p>State, <code>useState</code>, <code>useEffect</code>, forms, events, routing, APIs, <code>async/await</code>, promises, REST, HTTP, Node/backend, SQL/PostgreSQL, authentication, testing, deployment, security.</p>
+
+<div class="box"><strong>Career path:</strong> Learning → Building Portfolio → Almost Job Ready → Ready to Apply.</div>
+
+<h2>15. Quick Self-Test</h2>
+<ol>
+  <li>What does <code>{ }</code> mean in JSX?</li>
+  <li>What are props?</li>
+  <li>What is an array?</li>
+  <li>What is an object?</li>
+  <li>What does <code>.map()</code> do?</li>
+  <li>What does <code>=&gt;</code> mean?</li>
+  <li>Why does React need <code>key</code>?</li>
+  <li>What does <code>status: 'In Progress' | 'Next'</code> mean?</li>
+  <li>Explain how the React app starts.</li>
+  <li>Explain your project in 30 seconds.</li>
+</ol>
+
+<div class="box"><strong>Most important:</strong> Don’t memorize code blindly. Learn how to read it, explain it, and use the same idea in a real application.</div>
+
+<h2>16. Actual Project Code So Far</h2>
+<p><strong>Purpose:</strong> Ito ang current code from the GitHub project, para ma-review mo how the files connect. Focus on understanding the important lines, not memorizing every config option.</p>
+<h3>package.json</h3><pre>{
+  &quot;name&quot;: &quot;web&quot;,
+  &quot;private&quot;: true,
+  &quot;version&quot;: &quot;0.0.0&quot;,
+  &quot;type&quot;: &quot;module&quot;,
+  &quot;dependencies&quot;: {
+    &quot;react&quot;: &quot;^19.2.8&quot;,
+    &quot;react-dom&quot;: &quot;^19.2.8&quot;
+  },
+  &quot;devDependencies&quot;: {
+    &quot;@types/react&quot;: &quot;^19.2.18&quot;,
+    &quot;@types/react-dom&quot;: &quot;^19.2.4&quot;,
+    &quot;@vitejs/plugin-react&quot;: &quot;^6.0.5&quot;,
+    &quot;typescript&quot;: &quot;^7.0.2&quot;,
+    &quot;vite&quot;: &quot;^8.2.1&quot;
+  },
+  &quot;scripts&quot;: {
+    &quot;dev&quot;: &quot;vite&quot;
+  }
+}</pre>
+<h3>index.html</h3><pre>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;title&gt;React Learning App&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;
+    &lt;script type=&quot;module&quot; src=&quot;/src/main.tsx&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+<h3>src/main.tsx</h3><pre>import { StrictMode } from &quot;react&quot;;
+import { createRoot } from &quot;react-dom/client&quot;;
+import App from &quot;./App&quot;;
+import &quot;./index.css&quot;;
+
+createRoot(document.getElementById(&quot;root&quot;)!).render(
+  &lt;StrictMode&gt;
+    &lt;App /&gt;
+  &lt;/StrictMode&gt;,
+);</pre>
+<h3>src/App.tsx</h3><pre>import TopicCard from &quot;./components/TopicCard&quot;;
+
+function App() {
+  const title = &quot;My Fullstack Roadmap&quot;;
+  const currentTopic = &quot;React&quot;;
+
+  const topics = [
+    {
+      title: &quot;React&quot;,
+      description: &quot;Learning React fundamentals.&quot;,
+      status: &quot;In Progress&quot;,
+    },
+    {
+      title: &quot;TypeScript&quot;,
+      description: &quot;Learning type-safe JavaScript.&quot;,
+      status: &quot;Next&quot;,
+    },
+    {
+      title: &quot;CSS&quot;,
+      description: &quot;Learning how to style web applications.&quot;,
+      status: &quot;Next&quot;,
+    },
+  ];
+
+  return (
+    &lt;main&gt;
+      &lt;h1&gt;{title}&lt;/h1&gt;
+      &lt;p&gt;I am currently learning {currentTopic}.&lt;/p&gt;
+
+      {topics.map((topic) =&gt; (
+        &lt;TopicCard
+          key={topic.title}
+          title={topic.title}
+          description={topic.description}
+          status={topic.status}
+        /&gt;
+      ))}
+
+      &lt;TopicCard
+        title=&quot;CSS&quot;
+        description=&quot;Learning how to style web applications.&quot;
+        status=&quot;Next&quot;
+      /&gt;
+    &lt;/main&gt;
+  );
+}
+
+export default App;</pre>
+<h3>src/components/TopicCard.tsx</h3><pre>type TopicCardProps = {
+  title: string;
+  description: string;
+  status: string;
+};
+
+function TopicCard({ title, description, status }: TopicCardProps) {
+  return (
+    &lt;section&gt;
+      &lt;h2&gt;{title}&lt;/h2&gt;
+      &lt;p&gt;{description}&lt;/p&gt;
+      &lt;p&gt;Status: {status}&lt;/p&gt;
+    &lt;/section&gt;
+  );
+}
+
+export default TopicCard;</pre>
+<h3>src/index.css</h3><pre>body {
+  margin: 0;
+  background-color: #121212;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+}</pre>
+<h3>src/vite-env.d.ts</h3><pre>/// &lt;reference types=&quot;vite/client&quot; /&gt;
+
+declare module &quot;*.css&quot;;</pre>
+<h3>vite.config.ts</h3><pre>import react from &quot;@vitejs/plugin-react&quot;;
+import { defineConfig } from &quot;vite&quot;;
+
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    watch: {
+      usePolling: true,
+    },
+  },
+});</pre>
+<h3>tsconfig.json</h3><pre>{
+  &quot;compilerOptions&quot;: {
+    &quot;target&quot;: &quot;ES2022&quot;,
+    &quot;useDefineForClassFields&quot;: true,
+    &quot;lib&quot;: [&quot;ES2022&quot;, &quot;DOM&quot;, &quot;DOM.Iterable&quot;],
+    &quot;allowJs&quot;: false,
+    &quot;skipLibCheck&quot;: true,
+    &quot;esModuleInterop&quot;: true,
+    &quot;allowSyntheticDefaultImports&quot;: true,
+    &quot;strict&quot;: true,
+    &quot;forceConsistentCasingInFileNames&quot;: true,
+    &quot;module&quot;: &quot;ESNext&quot;,
+    &quot;moduleResolution&quot;: &quot;Bundler&quot;,
+    &quot;resolveJsonModule&quot;: true,
+    &quot;isolatedModules&quot;: true,
+    &quot;noEmit&quot;: true,
+    &quot;jsx&quot;: &quot;react-jsx&quot;
+  },
+  &quot;include&quot;: [&quot;src&quot;]
+}</pre>
+
+<h2>17. Extra Review — Use Remaining Print Space</h2>
+
+<h3>How the Files Connect</h3>
+<p><code>index.html</code> provides the browser root → <code>main.tsx</code> starts React → <code>App.tsx</code> organizes data/UI → <code>TopicCard.tsx</code> renders reusable cards → <code>index.css</code> styles the page.</p>
+
+<h3>Code Reading Drill</h3>
+<p><strong><code>import TopicCard from "./components/TopicCard";</code></strong><br>
+Import the default <code>TopicCard</code> export so <code>App.tsx</code> can use that component.</p>
+
+<p><strong><code>topics.map((topic) =&gt; (...))</code></strong><br>
+Take each object from <code>topics</code>, call it <code>topic</code>, and return UI for it.</p>
+
+<p><strong><code>title={topic.title}</code></strong><br>
+Read: “Pass the current topic's <code>title</code> property into the child's <code>title</code> prop.”</p>
+
+<h3>Small Concepts Worth Remembering</h3>
+<ul>
+  <li><strong>Function</strong> — reusable block of code that can receive input and return output.</li>
+  <li><strong>Variable</strong> — named place/reference for a value, such as <code>title</code>.</li>
+  <li><strong>Parameter</strong> — input name received by a function, such as <code>topic</code>.</li>
+  <li><strong>Method</strong> — function attached to a value/object, such as array <code>.map()</code>.</li>
+  <li><strong>DOM</strong> — browser representation of the HTML document; React renders UI into it.</li>
+  <li><strong>Dependency</strong> — package the app needs to run, such as React.</li>
+  <li><strong>Dev dependency</strong> — package mainly needed while developing/building, such as Vite or TypeScript.</li>
+</ul>
+
+<h3>Interview Mini Drill</h3>
+<p><strong>What is the difference between an array and an object?</strong><br>
+“An array stores an ordered list of values. An object groups values using named properties.”</p>
+
+<p><strong>Why create reusable components?</strong><br>
+“They reduce duplicated UI code and let the same structure display different data through props.”</p>
+
+<p><strong>What does <code>pnpm dev</code> do here?</strong><br>
+“It runs the <code>dev</code> script from package.json, which starts Vite's development server.”</p>
+
+<div class="box"><strong>Practice:</strong> Pick one code block and explain every important symbol aloud: <code>()</code>, <code>{}</code>, <code>[]</code>, <code>.</code>, <code>=&gt;</code>, and JSX tags. If you can explain the code, you understand it better than by memorizing it.</div>
+
+</div>
+</main>
+</body>
+</html>
