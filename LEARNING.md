@@ -17,6 +17,34 @@ Priority:
 - Project progress and existing code → actual GitHub repository
 - React concepts and recommended practices → official React Learn documentation
 
+## React Lesson Documentation Reference
+
+For every React lesson, also show where the same topic can be found in the official React documentation.
+
+Each React lesson should include:
+
+- the React Learn section/category
+- the exact lesson name
+- a direct link to the official React documentation
+- a short explanation of what I can review there
+
+The goal is to help me learn how to read official documentation independently, not only rely on guided lessons.
+
+Example:
+
+### Events
+
+React Learn → Adding Interactivity → Responding to Events
+
+https://react.dev/learn/responding-to-events
+
+This official lesson covers concepts such as:
+
+- `onClick`
+- event handlers
+- passing functions as event handlers
+- naming event-handler functions
+
 # Fullstack Developer Study Plan
 
 I am learning fullstack development by building a real project step by step.
